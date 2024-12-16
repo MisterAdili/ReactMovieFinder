@@ -31,7 +31,7 @@ class MovieFinder extends React.Component {
   }
 
   handleChange(event) {
-    this.setState({ sarchTerm: event.target.value });
+    this.setState({ searchTerm: event.target.value });
   }
 
   handleSubmit(event){
@@ -42,8 +42,7 @@ class MovieFinder extends React.Component {
       return;
     }
 
-    fetch('https://www.omdbapi.com/?s=${searchterm}&apikey=b7da8d63')
-    .then((response) => {
+    fetch('https://www.omdbapi.com/?s=${searchterm}&apikey=b7da8d63').then((response) => {
       if (response.ok) {
         return response.json();
       }
