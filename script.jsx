@@ -13,12 +13,12 @@ const Movie = (props) => {
   return (
     <div className="row">
       <div className="col-4 col-md-3 mb-3">
-        <a href={'https://www.imbd.com/title/${imdbID}/'} target="_blank">
+        <a href={`https://www.imbd.com/title/${imdbID}/`} target="_blank">
           <img src={Poster} className="img-fluid" />
         </a>
       </div> 
       <div className="col-8 col-md-3 mb-3">
-        <a href={'https://www.imdb.com/title/${imdbID}/'} target="_blank">
+        <a href={`https://www.imdb.com/title/${imdbID}/`} target="_blank">
           <h4>{Title}</h4>
           <p>{Type} | {Year}</p>
         </a>
@@ -52,7 +52,7 @@ class MovieFinder extends React.Component {
       return;
     }
 
-    fetch('https://www.omdbapi.com/?s=${searchterm}&apikey=b7da8d63')
+    fetch(`https://www.omdbapi.com/?s=${searchterm}&apikey=b7da8d63`)
       .then(checkStatus)
       .then(json)
       .then((data) => {
