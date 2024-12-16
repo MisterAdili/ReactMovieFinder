@@ -46,13 +46,13 @@ class MovieFinder extends React.Component {
 
   handleSubmit(event){
     event.preventDetfault();
-    let {searchTerm } = this.state;
+    let { searchTerm } = this.state;
     searchTerm = searchTerm.trim();
     if (!searchTerm) {
       return;
     }
 
-    fetch(`https://www.omdbapi.com/?s=${searchterm}&apikey=b7da8d63`)
+    fetch(`https://www.omdbapi.com/?s=${searchTerm}&apikey=b7da8d63`)
       .then(checkStatus)
       .then(json)
       .then((data) => {
