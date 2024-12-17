@@ -5,7 +5,7 @@ const checkStatus = (response) => {
   throw new Error('Request was either a 404 or 500');
 }
 
-const json = (response) => response.json()
+const json = (response) => {response.json()}
 
 const Movie = (props) => {
   const { Title, Year, imdbID, Type, Poster } = props.movie;
