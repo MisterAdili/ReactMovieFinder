@@ -68,7 +68,7 @@ class MovieFinder extends React.Component {
         this.setState({ error: error.message });
         console.log(error);
       })
-    }
+  }
 
   render() {
     const { searchTerm, results, error } = this.state;
@@ -80,7 +80,7 @@ class MovieFinder extends React.Component {
             <form onSubmit={this.handleSubmit} className="form-inline my-4">
               <input
                 type="text"
-                className="form-Control mr-sm-2"
+                className="form-control mr-sm-2"
                 placeholder="frozen"
                 value={searchTerm}
                 onChange={this.handleChange}
