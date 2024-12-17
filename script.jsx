@@ -1,6 +1,5 @@
 const checkStatus = (response) => {
   if (response.ok) {
-    // .ok returns true if response status is 200-299
     return response;
   }
   throw new Error('Request was either a 404 or 500');
@@ -9,22 +8,16 @@ const checkStatus = (response) => {
 const json = (response) => response.json()
 
 const Movie = (props) => {
-  const {
-    Title,
-    Year,
-    imdbID,
-    Type,
-    Poster,
-  } = props.movie;
+  const { Title, Year, imdbID, Type, Poster, } = props.movie;
 
   return (
     <div className="row">
       <div className="col-4 col-md-3 mb-3">
-        <a href={`https://www.imdb.com/title/${imdbID}/`} target="_blank">
+        <a href={`https://www.imbd.com/title/${imdbID}/`} target="_blank">
           <img src={Poster} className="img-fluid" />
         </a>
-      </div>
-      <div className="col-8 col-md-9 mb-3">
+      </div> 
+      <div className="col-8 col-md-3 mb-3">
         <a href={`https://www.imdb.com/title/${imdbID}/`} target="_blank">
           <h4>{Title}</h4>
           <p>{Type} | {Year}</p>
@@ -35,7 +28,7 @@ const Movie = (props) => {
 }
 
 class MovieFinder extends React.Component {
-  constructor(props) {
+  constructor(props){
     super(props);
     this.state = {
       searchTerm: '',
@@ -51,8 +44,8 @@ class MovieFinder extends React.Component {
     this.setState({ searchTerm: event.target.value });
   }
 
-  handleSubmit(event) {
-    event.preventDefault();
+  handleSubmit(event){
+    event.preventDetfault();
     let { searchTerm } = this.state;
     searchTerm = searchTerm.trim();
     if (!searchTerm) {
@@ -67,7 +60,7 @@ class MovieFinder extends React.Component {
           throw new Error(data.Error);
         }
 
-        if (data.Response === 'True' && data.Search) {
+        if (data.Response === 'True') {
           this.setState({ results: data.Search, error: '' });
         }
       })
@@ -91,11 +84,11 @@ class MovieFinder extends React.Component {
                 placeholder="frozen"
                 value={searchTerm}
                 onChange={this.handleChange}
-              />
-              <button type="submit" className="btn btn-primary">Submit</button>
+                />
+                <button type="submit" className="btn btn-primary">Submit</button>
             </form>
             {(() => {
-              if (error) {
+              if(error) {
                 return error;
               }
               return results.map((movie) => {
