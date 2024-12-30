@@ -1,5 +1,6 @@
 const checkStatus = (response) => {
   if (response.ok) {
+
     return response;
   }
   throw new Error('Request was either a 404 or 500');
@@ -8,7 +9,13 @@ const checkStatus = (response) => {
 const json = (response) => response.json()
 
 const Movie = (props) => {
-  const { Title, Year, imdbID, Type, Poster, } = props.movie;
+  const { 
+    Title, 
+    Year, 
+    imdbID, 
+    Type, 
+    Poster, 
+  } = props.movie;
 
   return (
     <div className="row">
@@ -45,7 +52,7 @@ class MovieFinder extends React.Component {
   }
 
   handleSubmit(event){
-    event.preventDetfault();
+    event.preventDefault();
     let { searchTerm } = this.state;
     searchTerm = searchTerm.trim();
     if (!searchTerm) {
@@ -100,6 +107,7 @@ class MovieFinder extends React.Component {
       </div>
     )
   }
+
 }
 
 const container = document.getElementById('root');
